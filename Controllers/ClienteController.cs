@@ -61,7 +61,7 @@ namespace MVCEstacionamiento.Controllers
                 _context.Add(cliente);
                 await _context.SaveChangesAsync();
                 //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Create", "Vehiculo");
+                return RedirectToAction("Create", "Vehiculo", new { clienteId = cliente.Id });
             }
             return View(cliente);
         }

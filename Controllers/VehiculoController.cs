@@ -46,15 +46,14 @@ namespace MVCEstacionamiento.Controllers
         }
 
         // GET: Vehiculo/Create
-        public IActionResult Create()
+        public IActionResult Create(int clienteId)
         {
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "DNI");
+            ViewBag.ClienteId = clienteId;
             return View();
         }
 
+
         // POST: Vehiculo/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ClienteId,Patente,Marca,Modelo,Tipo")] Vehiculo vehiculo)
@@ -65,7 +64,7 @@ namespace MVCEstacionamiento.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Clientes, "Id", "DNI", vehiculo.ClienteId);
+            ViewBag.ClienteId = vehiculo.ClienteId;
             return View(vehiculo);
         }
 

@@ -22,7 +22,7 @@ namespace MVCEstacionamiento.Models
         [EnumDataType(typeof(TipoVehiculo))]
         public TipoVehiculo? Tipo { get; set; }
 
-        public Cliente Propietario { get; set; }
+        public Cliente? Propietario { get; set; }
     }
 
 
